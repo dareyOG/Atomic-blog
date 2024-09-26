@@ -1,7 +1,7 @@
-import { createContext, useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { faker } from '@faker-js/faker';
-import useTheme from './useTheme';
 import { PostProvider, PostContext } from './PostContext';
+import { ThemeProvider, ThemeContext } from './ThemeContext';
 
 function createRandomPost() {
   return {
@@ -10,17 +10,12 @@ function createRandomPost() {
   };
 }
 
-const ThemeContext = createContext();
-
 function App() {
-  // custom useTheme hook
-  const [isFakeDark, setIsFakeDark] = useTheme('fake-dark-mode');
-
   return (
     <section>
-      <ThemeContext.Provider value={{ isFakeDark, setIsFakeDark }}>
+      <ThemeProvider>
         <ThemeToggler />
-      </ThemeContext.Provider>
+      </ThemeProvider>
       <PostProvider>
         <Header />
         <Main />
