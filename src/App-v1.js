@@ -68,7 +68,7 @@ function App() {
 }
 
 function ThemeToggler() {
-  const { isFakeDark, setIsFakeDark } = useContext(DarkModeContext);
+  const { isFakeDark, setIsFakeDark } = useContext(ThemeContext);
   return (
     <button
       onClick={() => setIsFakeDark(isFakeDark => !isFakeDark)}
