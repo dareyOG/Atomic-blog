@@ -1,7 +1,8 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
+import { ThemeProvider, useTheme } from './ThemeContext';
 import { PostProvider, usePosts } from './PostContext';
-import { ThemeProvider, ThemeContext } from './ThemeContext';
 import createRandomPost from './RandomPost';
+// import Test from './Test';
 
 function App() {
   return (
@@ -20,11 +21,11 @@ function App() {
 }
 
 function ThemeToggler() {
-  const { isFakeDark, setIsFakeDark } = useContext(ThemeContext);
+  const { isFakeDark, setIsFakeDark } = useTheme('fake-dark-mode');
   return (
     <button
       onClick={() => setIsFakeDark(isFakeDark => !isFakeDark)}
-      className="btn-fake-dark-mode"
+      className="fake-dark-mode"
     >
       {isFakeDark ? '☀️' : '🌙'}
     </button>
